@@ -1,0 +1,433 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "config/database.js",
+			"settings":
+			{
+				"buffer_size": 149,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/index.html",
+			"settings":
+			{
+				"buffer_size": 1849,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/app",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/app/models",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/config",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/public"
+	],
+	"file_history":
+	[
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/public/index2.html",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/server.js",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/app/routes.js",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/app/models/todo.js",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/meanapp.sublime-project",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/public/js/controllers/main.js",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/public/index.html",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/config/database.js",
+		"/Users/PromaxMini/Sites/nodejs/express-tut/app.js",
+		"/Users/PromaxMini/Sites/nodejs/express-tut/route.js",
+		"/Users/PromaxMini/Sites/nodejs/express-tut/package.json",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/package.json",
+		"/Users/PromaxMini/Sites/nodejs/nodejs-arch/public/js/services/todos.js",
+		"/Users/PromaxMini/Desktop/OS Library/ALA/marketplace/how-to-shop.html",
+		"/Users/PromaxMini/Desktop/OS Library/ALA/marketplace/dashboard.html",
+		"/Users/PromaxMini/Desktop/OS Library/emerald-dragon/user-profile.html",
+		"/Users/PromaxMini/Desktop/OS Library/emerald-dragon/js/footer.js",
+		"/Users/PromaxMini/Sites/angularjs/angularjs-imageupload-directive/public/javascripts/imageupload.js",
+		"/Users/PromaxMini/Sites/angularjs/angularjs-imageupload-directive/demo.html",
+		"/Users/PromaxMini/Sites/angularjs/angularjs-imageupload-directive/app.js",
+		"/Users/PromaxMini/Sites/angularjs/angularjs2/app/app.module.ts",
+		"/Users/PromaxMini/Desktop/OS Library/Buddy Boss/buddyboss themes and plugin/boss-child/functions.php",
+		"/Users/PromaxMini/Desktop/OS Library/Buddy Boss/buddyboss themes and plugin/buddyboss-child-fixed-navbar/buddyboss-child-fixed-navbar/functions.php",
+		"/Users/PromaxMini/Sites/wordpress/buddyboss/header.php",
+		"/Users/PromaxMini/Sites/wordpress/buddyboss/index.php",
+		"/Users/PromaxMini/Downloads/download (8)",
+		"/Users/PromaxMini/Downloads/download (5)",
+		"/Users/PromaxMini/Sites/index.php",
+		"/Users/PromaxMini/Sites/website_alakris/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/Users/PromaxMini/Desktop/Credentials/All cpanel",
+		"/Users/PromaxMini/Sites/angularjs/TemplateAngularArch/dist/js/templateCachePartials.js",
+		"/Users/PromaxMini/Sites/angular-phonecat/app/phone-list/phone-list.template.html",
+		"/Users/PromaxMini/Sites/angular-phonecat/app/phone-list/phone-list.module.js",
+		"/Users/PromaxMini/Sites/angular-phonecat/app/phone-detail/phone-detail.module.js",
+		"/Users/PromaxMini/Sites/angular-phonecat/app/phone-detail/phone-detail.component.js",
+		"/Users/PromaxMini/Sites/angular-phonecat/app/app.config.js",
+		"/Users/PromaxMini/Sites/angular-phonecat/app/app.module.js",
+		"/Users/PromaxMini/Sites/angular-phonecat/app/phone-detail/phone-detail.template.html",
+		"/Users/PromaxMini/Desktop/custom_widget",
+		"/Users/PromaxMini/Desktop/embed",
+		"/Users/PromaxMini/Desktop/ae_embed",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/common.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/package.json",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/login/login.controller.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/superRestangular/superRest.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/theme/js/webarch.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/appshell.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/app.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/helpers.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/app.js",
+		"/Users/PromaxMini/Downloads/oc_banner_list.sql",
+		"/Users/PromaxMini/Sites/wordpress/tutorials/wp-cron.php",
+		"/Users/PromaxMini/Sites/wordpress/tutorials/index.php",
+		"/Users/PromaxMini/Sites/wordpress/tutorials/wp-settings.php",
+		"/Users/PromaxMini/Sites/wordpress/tutorials/wp-config.php",
+		"/Users/PromaxMini/Sites/angularjs/angularjs2/app/app.module.js",
+		"/Users/PromaxMini/Sites/angularjs/angularjs2/app/app.component.js",
+		"/Users/PromaxMini/Sites/angularjs/angularjs2/app/main.js",
+		"/Users/PromaxMini/Sites/node-todo/public/index.html",
+		"/Users/PromaxMini/Sites/node-todo/public/js/controllers/main.js",
+		"/Users/PromaxMini/Sites/node-todo/public/js/core.js",
+		"/Users/PromaxMini/Sites/node-todo/public/js/services/todos.js",
+		"/Users/PromaxMini/Sites/node-todo/config/database.js",
+		"/Users/PromaxMini/Sites/node-todo/server.js",
+		"/Users/PromaxMini/Sites/nodejs/server.js",
+		"/Users/PromaxMini/Sites/nodejs/public/index.html",
+		"/Users/PromaxMini/Sites/nodejs/package.json",
+		"/Users/PromaxMini/Sites/node-todo/package.json",
+		"/Users/PromaxMini/Sites/nodejs/app/routes.js",
+		"/Users/PromaxMini/Sites/nodejs/public/app.module.js",
+		"/Users/PromaxMini/Sites/node-todo/app/routes.js",
+		"/Users/PromaxMini/Sites/express-tut/route.js",
+		"/Users/PromaxMini/Sites/express-tut/app.js",
+		"/Users/PromaxMini/Desktop/Credentials/reacho/Testing/139.162.1.13",
+		"/Users/PromaxMini/Desktop/Credentials/reacho/Testing/Linode Credentials",
+		"/Users/PromaxMini/Desktop/Credentials/reacho/Reacho_New_Website_05_12_16/52.221.245.1",
+		"/Users/PromaxMini/Desktop/Credentials/reacho/Linode Credentials",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/login/login.html",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/login/login.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/login/login.component.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/user/user.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/user/user.factory.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/app.component.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateServer/app.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateServer/apps/BaseServer/index.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateServer/apps/BaseServer/routes/rLogin/loginRoute.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/sidebar/sidebar.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/headerbar/headerbar.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/headerbar/headerbar.controller.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/headerbar/headerbar.html",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/sidebar/sidebar.component.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/sidebar/sidebar.controller.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/sidebar/sidebar.html",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/login/login.css",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/sidebar/sidebar.css",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/headerbar/headerbar.component.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/user/user.spec.js",
+		"/Users/PromaxMini/Sites/nathe_bk/admin/controller/push/notify.php",
+		"/Users/PromaxMini/Desktop/nbs/a_config",
+		"/Users/PromaxMini/Desktop/nbs/c_config",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/user/user.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/user/user.factory.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/common/headerbar/headerbar.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/common/headerbar/headerbar.html",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/common/headerbar/headerbar.controller.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/common/headerbar/headerbar.component.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/components/employee/employee.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/components/employee/employee.html",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/components/employee/employee.controller.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/components/employee/employee.component.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/common/user/user.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/common/user/user.factory.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/common/user/user.spec.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/logout/logout.component.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/logout/logout.html",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/logout/logout.controller.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/logout/logout.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/user/user.spec.js",
+		"/Users/PromaxMini/Desktop/reacho_website_bk/20Dec2016/PostController.php",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/components.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/package.json",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/hiddenbar/hiddenbar.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateClient/client/app/app.html",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateServer/package.json",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateServer/JOS/configHelper.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateServer/config.json",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/components/sample/sample.controller.js",
+		"/Users/PromaxMini/Sites/angularjs/JOS 3/TemplateLogin/client/app/common/hiddenbar/hiddenbar.controller.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"imageResult<div class=\"panel panel-default\" ng-repeat=\"pitem in vm.pList track by $index\">\n                                <div class=\"panel-heading\">\n                                    Product <%$index+1%>\n                                    <button class=\"right btn btn-primary btn-xs pull-right\">\n                                        <span class=\"glyphicon glyphicon-plus-sign\"></span>\n                                    </button>\n                                    <input type=\"file\" ng-file-select=\"onFileSelect($files)\" product=\"<%$index%>\" multiple>\n                                </div>\n                                <div class=\"panel-body\">\n                                    <p ng-if=\"!pitem.product_images.length\">No images added</p>\n                                    <div class=\"col-md-4\" ng-repeat=\"image in pitem.product_images\">\n                                        <div class=\"thumbnail\">\n                                            <img ng-repest=\"image in pitem.product_images\" src=\"<% image %>\" class=\"img-rounded\"  width=\"100\" height=\"100\">\n                                            <div class=\"caption\">\n                                                <button class=\"btn btn-danger right btn-xs\">\n                                                   Remove\n                                               </button>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>",
+			"imageResult",
+			"createImage",
+			"DemoCtrl",
+			"createObjectURL",
+			"flowName",
+			"FlowName",
+			"directive",
+			"Added",
+			"FlowFilesAdded",
+			"embedWidgetUpcastFn",
+			"CKEDITOR.DEFAULT_AE_EMBED_WIDGET_TPL",
+			"ae_embed",
+			"DEFAULT_AE_EMBED_URL_TPL",
+			"messenger",
+			"Messenger",
+			"messager",
+			"message",
+			"toast",
+			"WP_ALLOW_MULTISITE",
+			"getOEmbedProvider",
+			"providers",
+			"getOEmbedProvider",
+			"user",
+			"vm",
+			"getTokenService",
+			"user",
+			"config",
+			"getTokenService",
+			"install",
+			"_todo-sprite.scss",
+			"@include",
+			"        \t\t\n",
+			"close",
+			"modal",
+			"block",
+			"blockquote",
+			"insta",
+			"padding-bottom",
+			"toolbar",
+			"indent",
+			"ButtonIn",
+			"ButtonCommand",
+			"ButtonStateClasses",
+			"ButtonCode",
+			"applyStyle",
+			"ButtonStyle",
+			"ae_ci",
+			"editorInteraction",
+			"embedUrl",
+			"embed",
+			"imageAdd",
+			"beforeImageAdd",
+			"imageA",
+			"serverResponse",
+			"dataDict",
+			"span",
+			"storageRef"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "config/database.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								149,
+								149
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1849,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1442,
+								1442
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "meanapp.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 287.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

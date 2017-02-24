@@ -1,5 +1,5 @@
 var Todo = require('./models/todo');
-
+var Post = require('./models/post/post');
 function getTodos(res) {
     Todo.find(function (err, todos) {
 
@@ -9,6 +9,18 @@ function getTodos(res) {
         }
 
         res.json(todos); // return all todos in JSON format
+    });
+};
+
+function getPosts(res){
+    Post.find(function (err, posts) {
+
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+
+        res.json(posts); // return all posts in JSON format
     });
 };
 
@@ -37,6 +49,31 @@ module.exports = function (app) {
         });
 
     });
+
+    // get all todos
+    app.get('/api/myposts-list', function (req, res) {
+        // use mongoose to get all posts in the database
+        getPosts(res);
+    });
+
+    // create post and
+    app.post('/api/createpost', function (req, res) {
+
+        // create a todo, information comes from AJAX request from Angular
+        Post.create({
+            title: req.body.title,
+            author: req.body.author,
+            description: req.body.description,
+            status: req.body.status
+        }, function (err) {
+            if (err)
+                res.send(err);
+
+            getPosts(res);
+        });
+
+    });
+
 
     // delete a todo
     app.delete('/api/todos/:todo_id', function (req, res) {
