@@ -1,4 +1,4 @@
-angular.module('meanapp', ['ui.router'])
+angular.module('meanapp', ['ui.router', 'oc.lazyLoad'])
         .config(config);
 
 
@@ -7,7 +7,7 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 function config($stateProvider, $urlRouterProvider) {
     "ngInject";
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/post-listing');
 
     $stateProvider
             .state('home', {
@@ -16,52 +16,26 @@ function config($stateProvider, $urlRouterProvider) {
             })
             .state('addpost', {
                 url: '/add-your-post',
-                templateUrl: 'app/components/post/addpost.template.html',
-                controller: function($scope, $http, $state) {
-                    
-                    $scope.post = {
-                        title: '',
-                        author: '',
-                        description: '',
-                        status: 0
-                    };
-
-                    $scope.loading = false;
-
-                    $scope.createPost = function(){
-
-                        $scope.loading = true;
-
-                        $http.post('/api/createpost', $scope.post)
-                            .then(function success(response) {
-                                $scope.loading = false;
-                                $scope.post = {};
-                                $state.go("myposts");
-                            }, function error(response){
-                                $scope.loading = false;
-                                alert('Sorry!, there is an error. Please try again');
-                        });
-                    };
+                controller:'PostController',
+                templateUrl:'app/components/post/addpost.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/post/post.controller.js'
+                            ]);
+                    }]
                 }
             })
-            .state('myposts', {
+            .state('postlist', {
                 url: '/post-listing',
-                templateUrl: 'app/components/post/myposts.template.html',
-                controller: function($scope, $http, $state) {
-
-                    $scope.myposts = [];
-                    $scope.loading = true;
-
-                    $http.get('/api/myposts-list')
-                        .then(function success(response) {
-
-                            $scope.myposts = response.data;
-                            $scope.loading = false;
-
-                        }, function error(response){
-                            $scope.loading = false;
-                            alert('Sorry!, there is an error. Please try again');
-                    });
+                controller:'PostListController',
+                templateUrl:'app/components/post-list/post-list.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/post-list/post-list.controller.js'
+                            ]);
+                    }]
                 }
             })
             .state('aboutus', {
