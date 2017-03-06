@@ -1,11 +1,19 @@
-angular.module('meanapp', ['ui.router'])
+angular.module('meanapp', ['ui.router','oc.lazyLoad'])
         .config(config);
 
 
-config.$inject = ['$stateProvider', '$urlRouterProvider'];
+config.$inject = ['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
 
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     "ngInject";
+
+    $ocLazyLoadProvider.config({
+        debug: true,
+        modules: [{
+            name: 'ngTastyModule',
+            files: ['/static/assets/ng-tasty/ng-tasty-tpls.min.js']
+        }]
+    });
 
     $urlRouterProvider.otherwise('/');
 
@@ -47,7 +55,9 @@ function config($stateProvider, $urlRouterProvider) {
             .state('myposts', {
                 url: '/post-listing',
                 templateUrl: 'app/components/post/myposts.template.html',
-                controller: function($scope, $http, $state) {
+                controller: function($scope, $http, $state, $ocLazyLoad) {
+
+                    $ocLazyLoad.load('ngTastyModule'); // will load the ngTastyModule
 
                     $scope.myposts = [];
                     $scope.loading = true;
