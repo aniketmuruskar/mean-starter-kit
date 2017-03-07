@@ -8,7 +8,7 @@ function PostListController($scope, $http, $state){
 	$scope.myposts = [];
     $scope.loading = true;
 
-    $http.get('/api/myposts-list')
+    $http.get('/api/posts/allposts-list')
         .then(function success(response) {
 
             $scope.myposts = response.data;

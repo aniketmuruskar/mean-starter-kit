@@ -18,7 +18,7 @@ function PostController($scope, $http, $state){
 
         $scope.loading = true;
 
-        $http.post('/api/createpost', $scope.post)
+        $http.post('/api/posts/createpost', $scope.post)
             .then(function success(response) {
                 $scope.loading = false;
                 $scope.post = {};

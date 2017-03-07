@@ -19,8 +19,15 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse applicati
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
 
-// routes ======================================================================
-require('./app/routes.js')(app);
+// application -------------------------------------------------------------
+app.get('*', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
+
+// app routes ======================================================================
+app.use('/api/posts', require('./app/routes/post'))
+
+//require('./app/routes.js')(app);
 
 // listen (start app with node server.js) ======================================
 app.listen(port);
