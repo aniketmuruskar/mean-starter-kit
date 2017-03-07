@@ -9,7 +9,8 @@
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="/static/assets/bootstrap/dist/css/bootstrap.min.css"><!-- load bootstrap -->
-	<link rel="stylesheet" href="/static/assets/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/assets/font-awesome/css/font-awesome.min.css"><!-- load font-awesome -->
+  <!-- <link rel="stylesheet" href="/static/assets/ngToast/dist/ngToast.min.css"> load ngToast -->
 
 </head>
 <body data-ng-app="meanapp">
@@ -22,15 +23,15 @@
       <li class="active"><a ui-sref="home">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Post <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a ui-sref="myposts">My Posts</a></li>
+          <li><a ui-sref="postlist">My Posts</a></li>
           <li><a ui-sref="addpost">Add Post</a></li>
         </ul>
       </li>
       <li><a ui-sref="addpost"></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
@@ -45,6 +46,8 @@
 	<script type="text/javascript"  src="/static/assets/angular/angular.min.js"></script><!-- load angular -->
 	<script type="text/javascript"  src="/static/assets/angular-ui-router/release/angular-ui-router.min.js"></script><!-- load angular-ui-router -->
   <script type="text/javascript"  src="/static/assets/oclazyload/dist/ocLazyLoad.min.js"></script><!-- load oclazyload -->
+  <!-- <script type="text/javascript"  src="/static/assets/angular-sanitize/angular-sanitize.min.js"></script> load angular-sanitize -->
+  <!-- <script type="text/javascript"  src="/static/assets/ngToast/dist/ngToast.min.js"></script> load ngToast -->
   <script type="text/javascript"  src="/app/app.js"></script>
 </body>
 </html>

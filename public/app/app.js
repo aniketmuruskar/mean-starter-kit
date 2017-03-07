@@ -15,63 +15,59 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         }]
     });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/post-listing');
 
     $stateProvider
             .state('home', {
                 url: '/',
                 template: '<h1>Dashboard</h1>',
             })
-            .state('addpost', {
-                url: '/add-your-post',
-                templateUrl: 'app/components/post/addpost.template.html',
-                controller: function($scope, $http, $state) {
-                    
-                    $scope.post = {
-                        title: '',
-                        author: '',
-                        description: '',
-                        status: 0
-                    };
-
-                    $scope.loading = false;
-
-                    $scope.createPost = function(){
-
-                        $scope.loading = true;
-
-                        $http.post('/api/createpost', $scope.post)
-                            .then(function success(response) {
-                                $scope.loading = false;
-                                $scope.post = {};
-                                $state.go("myposts");
-                            }, function error(response){
-                                $scope.loading = false;
-                                alert('Sorry!, there is an error. Please try again');
-                        });
-                    };
+            .state('login', {
+                url: '/auth/sign-in',
+                controller:'LoginController',
+                templateUrl:'app/components/login/login.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/login/login.controller.js'
+                            ]);
+                    }]
                 }
             })
-            .state('myposts', {
+            .state('signup', {
+                url: '/auth/sign-up',
+                controller:'RegisterController',
+                templateUrl:'app/components/signup/register.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/signup/register.controller.js'
+                            ]);
+                    }]
+                }
+            })
+            .state('addpost', {
+                url: '/add-your-post',
+                controller:'PostController',
+                templateUrl:'app/components/post/addpost.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/post/post.controller.js'
+                            ]);
+                    }]
+                }
+            })
+            .state('postlist', {
                 url: '/post-listing',
-                templateUrl: 'app/components/post/myposts.template.html',
-                controller: function($scope, $http, $state, $ocLazyLoad) {
-
-                    $ocLazyLoad.load('ngTastyModule'); // will load the ngTastyModule
-
-                    $scope.myposts = [];
-                    $scope.loading = true;
-
-                    $http.get('/api/myposts-list')
-                        .then(function success(response) {
-
-                            $scope.myposts = response.data;
-                            $scope.loading = false;
-
-                        }, function error(response){
-                            $scope.loading = false;
-                            alert('Sorry!, there is an error. Please try again');
-                    });
+                controller:'PostListController',
+                templateUrl:'app/components/post-list/post-list.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/post-list/post-list.controller.js'
+                            ]);
+                    }]
                 }
             })
             .state('aboutus', {
