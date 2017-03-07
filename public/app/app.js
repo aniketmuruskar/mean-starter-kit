@@ -1,11 +1,19 @@
-angular.module('meanapp', ['ui.router', 'oc.lazyLoad'])
+angular.module('meanapp', ['ui.router','oc.lazyLoad'])
         .config(config);
 
 
-config.$inject = ['$stateProvider', '$urlRouterProvider'];
+config.$inject = ['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
 
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     "ngInject";
+
+    $ocLazyLoadProvider.config({
+        debug: true,
+        modules: [{
+            name: 'ngTastyModule',
+            files: ['/static/assets/ng-tasty/ng-tasty-tpls.min.js']
+        }]
+    });
 
     $urlRouterProvider.otherwise('/post-listing');
 
@@ -13,6 +21,30 @@ function config($stateProvider, $urlRouterProvider) {
             .state('home', {
                 url: '/',
                 template: '<h1>Dashboard</h1>',
+            })
+            .state('login', {
+                url: '/auth/sign-in',
+                controller:'LoginController',
+                templateUrl:'app/components/login/login.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/login/login.controller.js'
+                            ]);
+                    }]
+                }
+            })
+            .state('signup', {
+                url: '/auth/sign-up',
+                controller:'RegisterController',
+                templateUrl:'app/components/signup/register.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/signup/register.controller.js'
+                            ]);
+                    }]
+                }
             })
             .state('addpost', {
                 url: '/add-your-post',
