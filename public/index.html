@@ -14,7 +14,7 @@
 
 </head>
 <body data-ng-app="meanapp">
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse" ng-controller="HeaderBarController">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">WebSiteName</a>
@@ -30,8 +30,10 @@
       <li><a ui-sref="addpost"></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li ng-show="isLoggedIn()"><a href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span>Hello, {{ currentUser() }}</a></li>
+      <li ng-show="isLoggedIn()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+      <li ng-hide="isLoggedIn()"><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li ng-hide="isLoggedIn()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
@@ -48,6 +50,10 @@
   <script type="text/javascript"  src="/static/assets/oclazyload/dist/ocLazyLoad.min.js"></script><!-- load oclazyload -->
   <!-- <script type="text/javascript"  src="/static/assets/angular-sanitize/angular-sanitize.min.js"></script> load angular-sanitize -->
   <!-- <script type="text/javascript"  src="/static/assets/ngToast/dist/ngToast.min.js"></script> load ngToast -->
+  <script type="text/javascript"  src="/app/shared/shared.module.js"></script>
+  <script type="text/javascript"  src="/app/common/common.module.js"></script>
+  <script type="text/javascript"  src="/app/shared/services/auth.factory.js"></script>
+  <script type="text/javascript"  src="/app/common/headerbar/headerbar.controller.js"></script>
   <script type="text/javascript"  src="/app/app.js"></script>
 </body>
 </html>

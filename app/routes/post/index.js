@@ -3,15 +3,26 @@ const router = require('express').Router()
 var Post = require('../../models/post/post');
 
 function getPosts(res){
-    Post.find(function (err, posts) {
+    
+    var skipValue = 0;
+    var limitValue = 5;
 
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        if (err) {
-            res.send(err);
-        }
-
-        res.json(posts); // return all posts in JSON format
-    });
+    Post.find()
+        .limit(limitValue)
+        .skip(skipValue)
+        .sort({
+            _id: 'desc'
+        })
+        .exec(function(err, posts) {
+            Post.count().exec(function(err, count) {
+                res.json({
+                    rows: posts,
+                    page: 1,
+                    pages: 6,
+                    total: count
+                });
+            })
+        })
 };
 
 // get all posts

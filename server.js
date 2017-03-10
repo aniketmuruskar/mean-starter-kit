@@ -2,7 +2,7 @@
 var express = require('express');
 var app = express(); 				// create our app w/ express
 var mongoose = require('mongoose'); // mongoose for mongodb
-var port = 8889; // set the port
+var port = 8886; // set the port
 var database = require('./config/database'); // load the database config
 
 var morgan = require('morgan');

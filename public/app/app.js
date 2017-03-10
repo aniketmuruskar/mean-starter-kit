@@ -1,11 +1,17 @@
-angular.module('meanapp', ['ui.router','oc.lazyLoad'])
+angular.module('meanapp', ['ui.router','oc.lazyLoad', 'shared.module', 'common.module'])
+        .run(run)
+        .factory('myHttpInterceptor', myHttpInterceptor)
         .config(config);
 
+run.$inject = ['$rootScope', '$state'];
+myHttpInterceptor.$inject = ['$q'];
+config.$inject = ['$compileProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
 
-config.$inject = ['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
-
-function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     "ngInject";
+    
+    $compileProvider.debugInfoEnabled(false);
+    $httpProvider.interceptors.push('myHttpInterceptor');
 
     $ocLazyLoadProvider.config({
         debug: true,
@@ -78,4 +84,21 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
                 url: '/contact-us',
                 template: '<h1>Contact us</h1>',
             })
-}
+};
+
+function run($rootScope, $state){
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        console.log('from:' + fromState.name + ' to:' +toState.name);
+    });
+};
+
+function myHttpInterceptor($q){
+    return {
+        request: function(config) {
+            return config;
+        },
+
+        requestError: function(rejection) {
+        }
+    };
+};

@@ -1,21 +1,26 @@
-angular.module('meanapp')
-		.controller('LoginController', LoginController);
+;(function () {
+    'use strict';
+    angular.module('meanapp')
+    		.controller('LoginController', LoginController);
 
-/*@ngInject*/
-LoginController.$inject = ['$scope', '$http', '$state'];
-function LoginController($scope, $http, $state){
+    /*@ngInject*/
+    LoginController.$inject = ['$scope', '$http', '$state', 'auth'];
+    function LoginController($scope, $http, $state, auth){
 
-	$scope.user = {};
+    	$scope.user = {};
 
-	$scope.authenticate = function(){
-        
-		$http.post('/api/authenticate', $scope.user)
-            .then(function success(response) {
+    	$scope.authenticate = function(){
+
+            $scope.loading = true;
+
+            auth.login($scope.user).error(function(error){
+              $scope.error = error;
+              $scope.loading = false;
+              alert('Sorry!, there is an error. Please try again');
+            }).then(function(){
                 $scope.loading = false;
-            }, function error(response){
-                $scope.loading = false;
-
-                alert('Sorry!, there is an error. Please try again');
-        });
-	};
-};
+                $state.go('postlist');
+            });
+    	};
+    };
+})();

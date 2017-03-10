@@ -12,7 +12,7 @@ function PostListController($scope, $http, $state){
         $http.get('/api/posts/allposts')
         .then(function success(response) {
 
-            $scope.myposts = response.data;
+            $scope.myposts = response.data.rows;
             $scope.loading = false;
 
         }, function error(response){
