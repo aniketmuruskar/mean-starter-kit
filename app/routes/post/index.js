@@ -1,7 +1,6 @@
-var express = require('express')
-var router = express.Router()
+const router = require('express').Router()
 
-var Post = require('../models/post/post');
+var Post = require('../../models/post/post');
 
 function getPosts(res){
     Post.find(function (err, posts) {
@@ -15,16 +14,14 @@ function getPosts(res){
     });
 };
 
-// get all todos
-router.get('/allposts-list', function (req, res) {
-    // use mongoose to get all posts in the database
+// get all posts
+router.get('/allposts', function (req, res) {
     getPosts(res);
 });
 
 // create post
 router.post('/createpost', function (req, res) {
-
-    // create a todo, information comes from AJAX request from Angular
+    
     Post.create({
         title: req.body.title,
         author: req.body.author,

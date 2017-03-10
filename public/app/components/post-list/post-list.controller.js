@@ -8,7 +8,8 @@ function PostListController($scope, $http, $state){
 	$scope.myposts = [];
     $scope.loading = true;
 
-    $http.get('/api/posts/allposts-list')
+    var loadpost = function(){
+        $http.get('/api/posts/allposts')
         .then(function success(response) {
 
             $scope.myposts = response.data;
@@ -18,4 +19,6 @@ function PostListController($scope, $http, $state){
             $scope.loading = false;
             alert('Sorry!, there is an error. Please try again');
         });
+    };    
+    loadpost();
 };

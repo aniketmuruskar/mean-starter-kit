@@ -15,7 +15,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         }]
     });
 
-    $urlRouterProvider.otherwise('/post-listing');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
             .state('home', {

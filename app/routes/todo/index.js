@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-var Todo = require('./models/todo');
+var Todo = require('.../models/todo');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
