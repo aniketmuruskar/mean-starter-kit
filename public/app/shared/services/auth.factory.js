@@ -45,9 +45,9 @@ angular.module('shared.module')
 
 	    object.login = function(user) {
 
-	    	return $http.post('/api/authenticate', user).success(function(data){
-	    		if(data.token){
-	    			object.saveToken(data.token);
+	    	return $http.post('/api/authenticate', user).then(function(response){
+	    		if(response.data.token){
+	    			object.saveToken(response.data.token);
 	    		}
 			});
 	    };

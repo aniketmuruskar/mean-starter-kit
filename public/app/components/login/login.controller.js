@@ -1,7 +1,7 @@
 ;(function () {
     'use strict';
     angular.module('meanapp')
-    		.controller('LoginController', LoginController);
+    	.controller('LoginController', LoginController);
 
     /*@ngInject*/
     LoginController.$inject = ['$scope', '$http', '$state', 'auth'];
@@ -13,13 +13,13 @@
 
             $scope.loading = true;
 
-            auth.login($scope.user).error(function(error){
-              $scope.error = error;
-              $scope.loading = false;
-              alert('Sorry!, there is an error. Please try again');
-            }).then(function(){
+            auth.login($scope.user).then(function(response){
                 $scope.loading = false;
                 $state.go('postlist');
+            }, function(error){
+                $scope.error = error.data;
+                $scope.loading = false;
+                alert('Sorry!, there is an error. Please try again');
             });
     	};
     };
