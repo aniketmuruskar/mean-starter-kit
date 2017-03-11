@@ -2,14 +2,15 @@ const router = require('express').Router()
 
 var Post = require('../../models/post/post');
 
-function getPosts(res){
+function getPosts(req, res){
     
-    var skipValue = 0;
-    var limitValue = 5;
+    var perPage = Math.abs(req.query.count) || 5,
+        pageValue = Math.abs(req.query.page) || 1,
+        headerValue = []
 
     Post.find()
-        .limit(limitValue)
-        .skip(skipValue)
+        .limit(perPage)
+        .skip((pageValue - 1) * perPage)
         .sort({
             _id: 'desc'
         })
@@ -17,9 +18,16 @@ function getPosts(res){
             Post.count().exec(function(err, count) {
                 res.json({
                     rows: posts,
-                    page: 1,
-                    pages: 6,
-                    total: count
+                    header: headerValue,
+                    pagination: { 
+                        count: perPage,
+                        page: pageValue,
+                        pages: Math.ceil(count/perPage),
+                        size: count
+                    },
+                    
+                    sort_by: '_id',
+                    sort_order: 'dsc'
                 });
             })
         })
@@ -27,7 +35,7 @@ function getPosts(res){
 
 // get all posts
 router.get('/allposts', function (req, res) {
-    getPosts(res);
+    getPosts(req, res);
 });
 
 // create post
@@ -42,7 +50,7 @@ router.post('/createpost', function (req, res) {
         if (err)
             res.send(err);
 
-        getPosts(res);
+        getPosts(req, res);
     });
 
 });

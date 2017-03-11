@@ -18,7 +18,6 @@ require('./app/models/user/auth');  	// load the passport for authrntication wit
 var passport = require('./config/passport');
 app.use(passport.initialize());
 
-
 app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser.urlencoded({'extended': 'true'})); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json

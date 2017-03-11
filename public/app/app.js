@@ -70,6 +70,7 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 templateUrl:'app/components/post-list/post-list.template.html',
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
+                        $ocLazyLoad.load('ngTastyModule');
                         return $ocLazyLoad.load([
                                 'app/components/post-list/post-list.controller.js'
                             ]);

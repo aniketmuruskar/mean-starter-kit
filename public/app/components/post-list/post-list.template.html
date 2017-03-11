@@ -1,37 +1,40 @@
 <div class="row">
   <div data-ng-controller="PostListController" class="col-md-12 col-lg-12">
-  <h2>My Posts</h2> 
-  <p><a class="btn btn-info" ui-sref="addpost">Add Post</a></p>
-  <p class="text-center" ng-show="loading">
-      <span class="fa fa-spinner fa-spin fa-3x"></span>
-  </p>          
-  <table class="table table-bordered" ng-if="myposts.length">
-      <thead>
-        <tr>
-          <th>Sr Np</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th width="40%">Description</th>
-          <th width="15%">Operation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="post in myposts track by $index">
-          <td>{{$index+1}}</td>
-          <td>{{post.title}}</td>
-          <td>{{post.author}}</td>
-          <td>{{post.description}}</td>
-          <td>
-            <a href="#" class="btn btn-default">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </a>
-            <a href="#" class="btn btn-default">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-  </table>
-  <p ng-if="!loading && !myposts.length">No posts to show</p>
+    <h2>My Posts</h2> 
+    <p><a class="btn btn-info" ui-sref="addpost">Add Post</a></p>
+    <p class="text-center" ng-show="loading">
+        <span class="fa fa-spinner fa-spin fa-3x"></span>
+    </p>          
+      <div tasty-table bind-resource-callback="getResource" bind-init="init">
+        <table class="table table-bordered" ng-if="rows.length">
+            <thead>
+              <tr>
+                <th>Sr Np</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th width="40%">Description</th>
+                <th width="15%">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="post in rows track by $index">
+                <td>{{(pagination.page - 1)*(pagination.count)+($index + 1)}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.author}}</td>
+                <td>{{post.description}}</td>
+                <td>
+                  <a href="#" class="btn btn-default">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </a>
+                  <a href="#" class="btn btn-default">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        <p ng-if="!loading && !rows.length">No posts to show</p>
+        <div tasty-pagination></div>
+      </div>
   </div>
 </div>

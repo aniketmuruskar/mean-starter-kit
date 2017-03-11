@@ -1,18 +1,26 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('Post', {
+var PostSchema = new mongoose.Schema({
     title: { 
-    	type: String,
-    	default: ''
+      type: String,
+      default: ''
     },
     author: String,
     description: { 
       type: String, 
       default: ''
     },
-  	date:{ 
-  		type: Date,
-  		default: Date.now 
-  	},
-  	status: Boolean
+    date:{ 
+      type: Date,
+      default: Date.now 
+    },
+    upvotes: {type: Number, default: 0},
+    user: { 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User' 
+    },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    status: Boolean
 });
+
+module.exports = mongoose.model('Post', PostSchema);
