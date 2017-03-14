@@ -1,6 +1,8 @@
 const router = require('express').Router()
 
 var Post = require('../../models/post/post');
+var jwt = require('express-jwt');
+var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 function getPosts(req, res){
     
@@ -39,8 +41,8 @@ router.get('/allposts', function (req, res) {
 });
 
 // create post
-router.post('/createpost', function (req, res) {
-    
+router.post('/createpost', auth, function (req, res, next) {
+    /*
     Post.create({
         title: req.body.title,
         author: req.body.author,
@@ -49,6 +51,15 @@ router.post('/createpost', function (req, res) {
     }, function (err) {
         if (err)
             res.send(err);
+
+        getPosts(req, res);
+    });
+    */
+    var post = new Post(req.body);
+    post.user = req.payload._id;
+
+    post.save(function(err, post){
+        if(err){ return next(err); }
 
         getPosts(req, res);
     });

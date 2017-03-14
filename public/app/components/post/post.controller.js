@@ -2,8 +2,8 @@ angular.module('meanapp')
 		.controller('PostController', PostController);
 
 /*@ngInject*/
-PostController.$inject = ['$scope', '$http', '$state'];
-function PostController($scope, $http, $state){
+PostController.$inject = ['$scope', '$http', '$state', 'auth'];
+function PostController($scope, $http, $state, auth){
 
 	$scope.post = {
         title: '',
@@ -18,8 +18,9 @@ function PostController($scope, $http, $state){
 
         $scope.loading = true;
 
-        $http.post('/api/posts/createpost', $scope.post)
-            .then(function success(response) {
+        $http.post('/api/posts/createpost', $scope.post, {
+                headers: {Authorization: 'Bearer '+auth.getToken()}
+            }).then(function success(response) {
                 $scope.loading = false;
                 $scope.post = {};
                 

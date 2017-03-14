@@ -1,17 +1,18 @@
 angular.module('meanapp', ['ui.router','oc.lazyLoad', 'shared.module', 'common.module'])
         .run(run)
-        .factory('myHttpInterceptor', myHttpInterceptor)
-        .config(config);
+        .config(config)
+        .factory('myHttpInterceptor', myHttpInterceptor);
+        
 
 run.$inject = ['$rootScope', '$state'];
-myHttpInterceptor.$inject = ['$q'];
+myHttpInterceptor.$inject = ['auth'];
 config.$inject = ['$compileProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
 
 function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     "ngInject";
     
-    $compileProvider.debugInfoEnabled(false);
     $httpProvider.interceptors.push('myHttpInterceptor');
+    $compileProvider.debugInfoEnabled(false);
 
     $ocLazyLoadProvider.config({
         debug: true,
@@ -93,9 +94,14 @@ function run($rootScope, $state){
     });
 };
 
-function myHttpInterceptor($q){
+function myHttpInterceptor(auth){
     return {
         request: function(config) {
+            config.headers = config.headers || {};
+            var token = auth.getToken();
+            if (token) {
+                config.headers.Authorization = 'Bearer ' + token;
+            }
             return config;
         },
 
