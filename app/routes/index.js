@@ -8,5 +8,6 @@ router.get('/', function (req, res) {
 
 router.use('/api/posts', require('./post'));
 router.use('/api', require('./auth'));
+router.use('/api/profile', require('./profile'));
 
 module.exports = router;

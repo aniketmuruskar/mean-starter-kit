@@ -2,8 +2,8 @@ angular.module('meanapp')
 		.controller('PostListController', PostListController);
 
 /*@ngInject*/
-PostListController.$inject = ['$scope', '$http', '$state'];
-function PostListController($scope, $http, $state){
+PostListController.$inject = ['$scope', '$http', '$state', 'auth'];
+function PostListController($scope, $http, $state, auth){
 
 	$scope.myposts = [];
     $scope.loading = true;
@@ -25,7 +25,9 @@ function PostListController($scope, $http, $state){
     $scope.getResource = function (params, paramsObj) {
         var url = '/api/posts/allposts?' + params;
 
-        return $http.get(url).then(function (response) {
+        return $http.get(url, {
+            headers: {Authorization: 'Bearer '+auth.getToken()}
+        }).then(function (response) {
             $scope.loading = false;
             return {
               'rows': response.data.rows,

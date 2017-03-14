@@ -77,6 +77,29 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                     }]
                 }
             })
+            .state('profile', {
+                url: '/user/profile',
+                controller:'ProfileController',
+                templateUrl:'app/components/profile/profile.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        $ocLazyLoad.load('ngTastyModule');
+                        return $ocLazyLoad.load([
+                                'app/components/profile/profile.controller.js'
+                            ]);
+                    }],
+                    getProfile: ['$http', 'auth', function($http, auth){
+                        var url = '/api/profile/user';
+                        return $http.get(url, {
+                            headers: {Authorization: 'Bearer '+auth.getToken()}
+                        }).then(function (response) {
+                            return response.data;
+                        }, function error(response){
+                            alert('Error! profile fetching');
+                        });
+                    }]
+                }
+            })
             .state('aboutus', {
                 url: '/about-us',
                 template: '<h1>About us</h1>',
@@ -106,7 +129,7 @@ function myHttpInterceptor($q){
         responseError: function (response) {
             alert("Please login again.");
             if (response.status === 401) {
-               window.location.href = "http://localhost:8886/#/auth/sign-in";
+               window.location.href = "http://localhost:8886/#!/auth/sign-in";
             }
             if (response.status == 403) {
                 alert("Permission denied.");
