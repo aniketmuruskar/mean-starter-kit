@@ -2,6 +2,7 @@ const router = require('express').Router()
 
 var passport = require('passport');
 var User = require('../../models/user/auth');
+var Profile = require('../../models/profile/profile');
 
 router.post('/user/register', function(req, res, next){
 
@@ -18,7 +19,14 @@ router.post('/user/register', function(req, res, next){
 	  user.save(function (err){
 	    	if(err){ return next(err);
 	  	}
-	    //return res.json({token: user.generateJWT()})
+
+	    var profile = new Profile();
+		profile.user = user._id;
+		profile.save(function (err) {
+		    if (err) return next(err);
+		});
+
+		//return res.json({token: user.generateJWT()})
 	    return res.json({result:1})
 	  });
 });

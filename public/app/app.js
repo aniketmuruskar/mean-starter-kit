@@ -4,15 +4,14 @@ angular.module('meanapp', ['ui.router','oc.lazyLoad', 'shared.module', 'common.m
         .factory('myHttpInterceptor', myHttpInterceptor);
         
 
-run.$inject = ['$rootScope', '$state'];
-myHttpInterceptor.$inject = ['auth'];
-config.$inject = ['$compileProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
 
+/*@ngInject*/
+config.$inject = ['$compileProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
 function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     "ngInject";
     
     $httpProvider.interceptors.push('myHttpInterceptor');
-    $compileProvider.debugInfoEnabled(false);
+    $compileProvider.debugInfoEnabled(true);
 
     $ocLazyLoadProvider.config({
         debug: true,
@@ -88,24 +87,34 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
             })
 };
 
+/*@ngInject*/
+run.$inject = ['$rootScope', '$state'];
 function run($rootScope, $state){
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         console.log('from:' + fromState.name + ' to:' +toState.name);
     });
 };
 
-function myHttpInterceptor(auth){
+/*@ngInject*/
+myHttpInterceptor.$inject = ['$q'];
+function myHttpInterceptor($q){
     return {
         request: function(config) {
-            config.headers = config.headers || {};
-            var token = auth.getToken();
-            if (token) {
-                config.headers.Authorization = 'Bearer ' + token;
-            }
             return config;
         },
 
-        requestError: function(rejection) {
+        responseError: function (response) {
+            alert("Please login again.");
+            if (response.status === 401) {
+               window.location.href = "http://localhost:8886/#/auth/sign-in";
+            }
+            if (response.status == 403) {
+                alert("Permission denied.");
+            }
+            if (response.status == 400) {
+                alert("Exception occured. Bad request.");
+            }
+            return $q.reject(response);
         }
     };
 };

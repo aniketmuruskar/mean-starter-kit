@@ -36,7 +36,6 @@ function PostListController($scope, $http, $state){
             }
         }, function error(response){
             $scope.loading = false;
-            alert('Sorry!, there is an error. Please try again');
         });
     };    
 };

@@ -36,7 +36,7 @@ function getPosts(req, res){
 };
 
 // get all posts
-router.get('/allposts', function (req, res) {
+router.get('/allposts', auth, function (req, res) {
     getPosts(req, res);
 });
 
