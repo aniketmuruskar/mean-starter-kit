@@ -7,7 +7,7 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 // get all posts
 router.get('/user', auth, function (req, res) {
     
-    Profile.find({
+    Profile.findOne({
         user: req.payload._id
     }, function (err, profile) {
         if (err)

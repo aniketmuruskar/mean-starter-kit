@@ -87,16 +87,6 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                         return $ocLazyLoad.load([
                                 'app/components/profile/profile.controller.js'
                             ]);
-                    }],
-                    getProfile: ['$http', 'auth', function($http, auth){
-                        var url = '/api/profile/user';
-                        return $http.get(url, {
-                            headers: {Authorization: 'Bearer '+auth.getToken()}
-                        }).then(function (response) {
-                            return response.data;
-                        }, function error(response){
-                            alert('Error! profile fetching');
-                        });
                     }]
                 }
             })
