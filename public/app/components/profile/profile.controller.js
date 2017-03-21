@@ -1,7 +1,12 @@
-angular.module('meanapp')
-		.controller('ProfileController', ProfileController);
+;(function () {
+	'use strict';
+	angular.module('meanapp')
+			.controller('ProfileController', ProfileController);
 
-/*@ngInject*/
-ProfileController.$inject = ['$scope', '$http', '$state'];
-function ProfileController($scope, $http, $state){
-};
+	/*@ngInject*/
+	ProfileController.$inject = ['$scope', 'profileData'];
+	function ProfileController($scope, profileData){
+		console.dir(profileData.user);
+		$scope.profile = profileData.user;
+	};
+})();

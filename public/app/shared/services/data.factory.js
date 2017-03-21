@@ -1,5 +1,5 @@
-angular.module('shared.module', [])
-		.service('data', dataService);
+angular.module('shared.module')
+		.factory('data', dataService);
 
 dataService.$inject = ['$http', 'auth'];
 
@@ -12,8 +12,18 @@ function dataService($http, auth){
   		}).then(function (response) {
 	      return response.data;
 	    });
-	}
+	};
+
+	function getData(url){
+		return $http.get(url, {
+            headers: {Authorization: 'Bearer '+auth.getToken()}
+  		}).then(function (response) {
+	      return response.data;
+	    });
+	};
+	
   	return {
-    	profile: getProfile
+    	profile: getProfile,
+    	get: getData
   	};
 }

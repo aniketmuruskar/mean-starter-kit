@@ -66,4 +66,17 @@ router.post('/createpost', auth, function (req, res, next) {
 
 });
 
+router.get('/:post_id', function (req, res) {
+
+    Post.findOne({
+        _id: req.params.post_id
+    }, function (err, post) {
+        if (err)
+            return res.json({result:0, data:[]});
+
+        return res.json({result:1, data:post});
+        
+    });
+});
+
 module.exports = router

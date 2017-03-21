@@ -64,6 +64,22 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                     }]
                 }
             })
+            .state('postdetail', {
+                url: '/post/:postId',
+                controller:'PostController',
+                templateUrl:'app/components/post/postdetail.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/post/post.controller.js'
+                            ]);
+                    }],
+                    post: ['data', '$stateParams', function (data, $stateParams) {
+                        var url = '/api/posts/' + $stateParams.postId;
+                        return data.get(url);
+                    }]
+                }
+            })
             .state('postlist', {
                 url: '/post-listing',
                 controller:'PostListController',
@@ -83,10 +99,13 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 templateUrl:'app/components/profile/profile.template.html',
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
-                        $ocLazyLoad.load('ngTastyModule');
                         return $ocLazyLoad.load([
                                 'app/components/profile/profile.controller.js'
                             ]);
+                    }],
+                    profileData: ['data', function (data) {
+                        // Return our Service call, that returns a Promise
+                        return data.profile();
                     }]
                 }
             })
