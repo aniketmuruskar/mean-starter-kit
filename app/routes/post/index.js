@@ -8,9 +8,10 @@ function getPosts(req, res){
     
     var perPage = Math.abs(req.query.count) || 5,
         pageValue = Math.abs(req.query.page) || 1,
-        headerValue = []
+        headerValue = [],
+        query = {'user':req.payload._id, 'status':true}
 
-    Post.find()
+    Post.find(query)
         .limit(perPage)
         .skip((pageValue - 1) * perPage)
         .sort({

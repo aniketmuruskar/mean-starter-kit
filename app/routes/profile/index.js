@@ -17,4 +17,17 @@ router.get('/user', auth, function (req, res) {
     });
 });
 
+// get all posts
+router.post('/update', auth, function (req, res) {
+    
+    var query = {'_id':req.body._id};
+
+    Profile.findOneAndUpdate(query, req.body, {new:true}, function (err, profile) {
+        if (err)
+            res.json({result:0});
+
+        return res.json({result:1, user:profile});
+    });
+});
+
 module.exports = router
