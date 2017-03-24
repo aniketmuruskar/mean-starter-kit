@@ -18,7 +18,7 @@ function getPosts(req, res){
             _id: 'desc'
         })
         .exec(function(err, posts) {
-            Post.count().exec(function(err, count) {
+            Post.count(query).exec(function(err, count) {
                 res.json({
                     rows: posts,
                     header: headerValue,
