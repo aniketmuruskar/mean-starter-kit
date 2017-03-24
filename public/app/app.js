@@ -26,7 +26,15 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
     $stateProvider
             .state('home', {
                 url: '/',
-                template: '<h1>Dashboard</h1>',
+                templateUrl: 'app/components/dashboard/dashboard.template.html',
+                controller: 'DashboardController',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                                'app/components/dashboard/dashboard.controller.js'
+                            ]);
+                    }]
+                }
             })
             .state('login', {
                 url: '/auth/sign-in',
