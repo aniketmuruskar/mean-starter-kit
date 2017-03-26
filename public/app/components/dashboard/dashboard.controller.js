@@ -5,14 +5,41 @@
 
     /*@ngInject*/
     DashboardController.$inject = ['$scope', '$http', '$state'];
-    function DashboardController($scope, $http, $state){
+    function DashboardController($scope, $http, $state) {
+    	
+        $scope.loading = true;
 
-    	$scope.title = "Creating Directive";
-    	$scope.footer = "Footer usign transclude option set to true";
-    	$scope.post = {
-    		author:'Aniket Muruskar',
-    		title:'Creating Directives',
-    		description: "Directives are markers on a DOM element (such as an attribute, element name, comment or CSS class) that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element"
-    	};
+        $scope.init = {
+          'count': 5,
+          'page': 1,
+          'sortBy': 'name',
+          'sortOrder': 'dsc',
+          'filterBase': 1 // set false to disable
+        };
+
+        $scope.filterBy = {
+          'name': 'r',
+          'sf-location': ''
+        };
+
+        $scope.getResource = function (params, paramsObj) {
+            alert('test');
+            var url = '/api/posts/dashboard?' + params;
+
+            return $http.get(url, {
+                headers: {Authorization: 'Bearer '+auth.getToken()}
+            }).then(function (response) {
+                $scope.loading = false;
+                return {
+                  'rows': response.data.rows,
+                  'header': response.data.header,
+                  'pagination': response.data.pagination,
+                  'sortBy': '_id',
+                  'sortOrder': 'dsc'
+                }
+            }, function error(response){
+                $scope.loading = false;
+            });
+        };  
     };
 })();

@@ -1,8 +1,13 @@
 <h2>Dashboard</h2>
 <div class="row" data-ng-controller="DashboardController">
+	<p class="text-center" ng-show="loading">
+        <span class="fa fa-spinner fa-spin fa-3x"></span>
+    </p>
 	<div class="col-md-6 col-xs-12">
-		<post>
-			Check out the contents, {{title}}!
-		</post>
+		<div tasty-table bind-resource-callback="getResource" bind-init="init">
+			<post ng-repeat="post in rows track by $index" post="post"></post>
+			<p ng-if="!loading && !rows.length">No posts to show</p>
+        	<div tasty-pagination></div>
+		</div>
 	</div>
 </div>

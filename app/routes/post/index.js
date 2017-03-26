@@ -80,4 +80,35 @@ router.get('/:post_id', function (req, res) {
     });
 });
 
+router.get('/dashboard', function (req, res) {
+    
+    var perPage = Math.abs(req.query.count) || 5,
+        pageValue = Math.abs(req.query.page) || 1,
+        headerValue = [],
+        query = {'status':true}
+
+    Post.find(query)
+        .limit(perPage)
+        .skip((pageValue - 1) * perPage)
+        .sort({
+            _id: 'desc'
+        })
+        .exec(function(err, posts) {
+            Post.count(query).exec(function(err, count) {
+                res.json({
+                    rows: posts,
+                    header: headerValue,
+                    pagination: { 
+                        count: perPage,
+                        page: pageValue,
+                        pages: Math.ceil(count/perPage),
+                        size: count
+                    },
+                    
+                    sort_by: '_id',
+                    sort_order: 'dsc'
+                });
+            })
+        })
+});
 module.exports = router

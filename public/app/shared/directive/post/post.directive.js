@@ -3,10 +3,9 @@ angular.module('shared.module')
 			return {
 				restrict : 'E',
 				transclude: false,
-				scope:{},
-				templateUrl:'app/shared/directive/post/post.directive.template.html',
-				link: function(scope) {
-			      scope.title = 'Creating Directive by transclude:false';
-			    }
+				scope:{
+					post:'='
+				},
+				templateUrl:'app/shared/directive/post/post.directive.template.html'
 			};
 		});
