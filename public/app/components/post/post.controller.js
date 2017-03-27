@@ -12,9 +12,9 @@ function PostController($scope, $http, $state, auth, $stateParams, post){
         status: 0
     };
 
-    if(!angular.isUndefined($stateParams.postId) || $stateParams.postId){
+    if(!angular.isUndefined($stateParams.postId) || $stateParams.postId) {
         $scope.post = post.data;
-    }else{
+    } else {
         alert('No Params');
     }
 

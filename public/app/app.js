@@ -30,6 +30,7 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 controller: 'DashboardController',
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
+                        $ocLazyLoad.load('ngTastyModule');
                         return $ocLazyLoad.load([
                                 'app/components/dashboard/dashboard.controller.js',
                                 'app/shared/directive/post/post.directive.js',
@@ -84,7 +85,7 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                             ]);
                     }],
                     post: ['data', '$stateParams', function (data, $stateParams) {
-                        var url = '/api/posts/' + $stateParams.postId;
+                        var url = '/api/posts/edit/' + $stateParams.postId;
                         return data.get(url);
                     }]
                 }

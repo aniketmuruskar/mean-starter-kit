@@ -23,12 +23,9 @@
         };
 
         $scope.getResource = function (params, paramsObj) {
-            alert('test');
             var url = '/api/posts/dashboard?' + params;
 
-            return $http.get(url, {
-                headers: {Authorization: 'Bearer '+auth.getToken()}
-            }).then(function (response) {
+            return $http.get(url).then(function (response) {
                 $scope.loading = false;
                 return {
                   'rows': response.data.rows,
@@ -40,6 +37,10 @@
             }, function error(response){
                 $scope.loading = false;
             });
-        };  
+        };
+
+        $scope.getData = function() {
+          
+        }; 
     };
 })();
