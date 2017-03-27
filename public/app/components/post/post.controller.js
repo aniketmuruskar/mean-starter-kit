@@ -2,8 +2,8 @@ angular.module('meanapp')
 		.controller('PostController', PostController);
 
 /*@ngInject*/
-PostController.$inject = ['$scope', '$http', '$state', 'auth', '$stateParams'];
-function PostController($scope, $http, $state, auth, $stateParams){
+PostController.$inject = ['$scope', '$http', '$state', 'auth', '$stateParams', 'post'];
+function PostController($scope, $http, $state, auth, $stateParams, post){
 
     $scope.post = {
         title: '',

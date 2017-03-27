@@ -31,8 +31,8 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
+                                'app/components/dashboard/dashboard.controller.js',
                                 'app/shared/directive/post/post.directive.js',
-                                'app/components/dashboard/dashboard.controller.js'
                             ]);
                     }]
                 }
