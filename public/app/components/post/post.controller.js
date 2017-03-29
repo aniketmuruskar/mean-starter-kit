@@ -2,8 +2,8 @@ angular.module('meanapp')
 		.controller('PostController', PostController);
 
 /*@ngInject*/
-PostController.$inject = ['$scope', '$http', '$state', 'auth', '$stateParams', 'post'];
-function PostController($scope, $http, $state, auth, $stateParams, post){
+PostController.$inject = ['$scope', '$http', '$state', 'auth'];
+function PostController($scope, $http, $state, auth){
 
     $scope.post = {
         title: '',
@@ -11,14 +11,6 @@ function PostController($scope, $http, $state, auth, $stateParams, post){
         description: '',
         status: 0
     };
-
-    if(!angular.isUndefined($stateParams.postId) || $stateParams.postId) {
-        $scope.post = post.data;
-    } else {
-        alert('No Params');
-    }
-
-	
 
     $scope.loading = false;
 
