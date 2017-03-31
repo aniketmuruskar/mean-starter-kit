@@ -4,7 +4,12 @@
   "description": "Simple todo application.",
   "main": "server.js",
   "author": "Scotch",
+  "scripts": {
+    "start": "nodemon server.js",
+    "prestart": "chmod -R 777 app && chmod -R 777 public"
+  },
   "dependencies": {
+    "angular-messages": "^1.6.3",
     "body-parser": "^1.4.3",
     "crypto": "0.0.3",
     "express": "^4.13.4",
