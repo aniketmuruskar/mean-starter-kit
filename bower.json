@@ -22,6 +22,7 @@
     "font-awesome": "fontawesome#^4.7.0",
     "oclazyload": "^1.1.0",
     "angular-ui-router": "^0.4.2",
-    "ng-tasty": "^0.6.1"
+    "ng-tasty": "^0.6.1",
+    "angular-file-upload": "^2.5.0"
   }
 }

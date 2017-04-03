@@ -3,11 +3,14 @@ angular.module('meanapp', ['ui.router','oc.lazyLoad', 'shared.module', 'common.m
         .config(config);
         
 /*@ngInject*/
-config.$inject = ['$compileProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
-function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+config.$inject = ['$compileProvider', '$httpProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
+function config($compileProvider, $httpProvider, $locationProvider, $stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+
     "ngInject";
-    
+
+
     $httpProvider.interceptors.push('myHttpInterceptor');
+    //$locationProvider.html5Mode(true);
     $compileProvider.debugInfoEnabled(true);
 
     $ocLazyLoadProvider.config({
@@ -15,6 +18,9 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
         modules: [{
             name: 'ngTastyModule',
             files: ['/static/assets/ng-tasty/ng-tasty-tpls.min.js']
+        },{
+            name: 'ngFileUpload',
+            files: ['/static/assets/angular-file-upload/dist/angular-file-upload.min.js']
         }]
     });
 
@@ -73,26 +79,8 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                     }]
                 }
             })
-            .state('postdetail', {
-                url: '/post/:postId',
-                controller:'PostDetailController',
-                templateUrl:'app/components/post-detail/postdetail.template.html',
-                resolve:{
-                    load: ['$ocLazyLoad', function($ocLazyLoad){
-                        return $ocLazyLoad.load([
-                            'app/components/post/post.service.js',
-                            'app/components/post-detail/post.detail.controller.js'
-                        ]);
-                    }],
-                    postdetail: ['Post', '$stateParams', function (Post, $stateParams) {
-                        var url = '/api/posts/edit/' + $stateParams.postId;
-                        console.log($stateParams.postId)
-                        return Post.get(url);
-                    }]
-                }
-            })
-            .state('postlist', {
-                url: '/post-listing',
+            .state('post', {
+                url: '/post',
                 controller:'PostListController',
                 templateUrl:'app/components/post-list/post-list.template.html',
                 resolve:{
@@ -105,6 +93,24 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                     }]
                 }
             })
+            .state('post.detail', {
+                url: '/{postId}',
+                controller:'PostDetailController',
+                templateUrl:'app/components/post-detail/postdetail.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                            'app/components/post/post.service.js',
+                            'app/components/post-detail/post.detail.controller.js'
+                        ]);
+                    }],
+                    postdetail: ['Post', '$stateParams', function (Post, $stateParams) {
+                        var url = '/api/posts/edit/' + $stateParams.postId;
+                        console.log($stateParams);
+                        return Post.get(url);
+                    }]
+                }
+            })            
             .state('profile', {
                 url: '/user/profile',
                 controller:'ProfileController',
@@ -116,8 +122,21 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                         ]);
                     }],
                     profileData: ['data', function (data) {
-                        // Return our Service call, that returns a Promise
-                        return data.profile();
+                        var url = '/api/profile/user';
+                        return data.get(url);
+                    }]
+                }
+            })
+            .state('setavatar', {
+                url: '/user/setavatar',
+                controller:'ProfileAvatarController',
+                templateUrl:'app/components/profile-avatar/profile.avatar.template.html',
+                resolve:{
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                        $ocLazyLoad.load('ngFileUpload');
+                        return $ocLazyLoad.load([
+                                'app/components/profile-avatar/profile.avatar.controller.js'
+                            ]);
                     }]
                 }
             })
@@ -133,7 +152,8 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
 
 /*@ngInject*/
 run.$inject = ['$rootScope', '$state'];
-function run($rootScope, $state){
+function run($rootScope, $state) {
+
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         console.log('from:' + fromState.name + ' to:' +toState.name);
     });

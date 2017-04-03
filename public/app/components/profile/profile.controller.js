@@ -15,7 +15,11 @@
 			var url = '/api/profile/update'
 			data.post(url, $scope.profile).then(function (response) {
 		      	if(response.result)
-		      		alert('Profile updated successfully');
+		      		$scope.alert = {
+                  		type: 'alert-success',
+                  		message: 'Your profile has been updated successfully',
+                  		show: true
+                	};
 		      	$scope.loading = false;
 		    });
 		};

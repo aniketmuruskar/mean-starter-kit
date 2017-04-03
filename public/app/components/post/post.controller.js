@@ -21,7 +21,7 @@ function PostController($scope, $state, Post){
         Post.create($scope.post).then(function success(response) {
             $scope.loading = false;
             $scope.post = {};
-            $state.go("postlist");
+            
         }, function error(response) {
             $scope.loading = false;
             alert('Sorry!, there is an error. Please try again');

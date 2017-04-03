@@ -3,6 +3,7 @@
 <head>
 <!-- META -->
 	<meta charset="utf-8">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
 	<title>Node/Angular Todo App</title>
@@ -23,7 +24,7 @@
       <li class="active"><a ui-sref="home">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Post <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a ui-sref="postlist">My Posts</a></li>
+          <li><a ui-sref="post">My Posts</a></li>
           <li><a ui-sref="addpost">Add Post</a></li>
         </ul>
       </li>
@@ -33,6 +34,7 @@
       <li ng-show="isLoggedIn()" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"> Hello {{ currentUser() }}, <span class="caret"></span></a>
       <ul class="dropdown-menu" ng-show="isLoggedIn()">
           <li><a ui-sref="profile" ><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+          <li><a ui-sref="setavatar" ><span class="glyphicon glyphicon-picture"></span> Set Picture</a></li>
           <li><a ui-sref="profile" ><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
           <li class="divider"></li>
           <li><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>

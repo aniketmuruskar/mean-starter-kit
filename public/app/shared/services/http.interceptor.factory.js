@@ -10,9 +10,7 @@ angular.module('shared.module')
 	    return {
 	        request: function(config) {
 	        	//injected manually to get around circular dependency problem.
-                var AuthService = $injector.get('auth');
-
-	        config.headers = config.headers || {};
+	        	config.headers = config.headers || {};
                 var token = jwt.getToken();
                 if (token) {
                     config.headers.Authorization = 'Bearer ' + token;

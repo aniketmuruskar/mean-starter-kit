@@ -23,7 +23,7 @@
 	    
 	    self.isLoggedIn = function() {
 		  var token = self.getToken();
-		  if(token){
+		  if(token) {
 		    var payload = self.parseJwt(token);
 		    return payload.exp > Date.now() / 1000;
 		  } else {
@@ -31,12 +31,12 @@
 		  }
 		};
 
-	    self.currentUser = function(){
+	    self.currentUser = function() {
 	    	if(self.isLoggedIn()){
 		    	var token = self.getToken();
 		    	var payload = self.parseJwt(token);
 		    	return payload.name;
-		  	}else{
+		  	} else {
 		  		return 'Guest';
 		  	}
 	    };

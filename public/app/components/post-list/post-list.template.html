@@ -23,7 +23,7 @@
                 <td>{{post.author}}</td>
                 <td>{{post.description}}</td>
                 <td>
-                  <a ui-sref="postdetail({ postId: post._id })" ui-sref-opts="{reload: true}" class="btn btn-default">
+                  <a ui-sref="post.detail({ postId: post._id })" class="btn btn-default">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </a>
                   <a href="#" class="btn btn-default">
@@ -37,4 +37,6 @@
         <div tasty-pagination></div>
       </div>
   </div>
+   <!-- viewport for child view -->
+  <ui-view></ui-view>
 </div>
