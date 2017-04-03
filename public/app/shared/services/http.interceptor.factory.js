@@ -9,7 +9,10 @@ angular.module('shared.module')
 	function myHttpInterceptor($q, jwt) {
 	    return {
 	        request: function(config) {
-	        	config.headers = config.headers || {};
+	        	//injected manually to get around circular dependency problem.
+                var AuthService = $injector.get('auth');
+
+	        config.headers = config.headers || {};
                 var token = jwt.getToken();
                 if (token) {
                     config.headers.Authorization = 'Bearer ' + token;
