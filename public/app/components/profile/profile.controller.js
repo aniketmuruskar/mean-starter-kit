@@ -14,7 +14,6 @@
 			$scope.loading = true;
 			var url = '/api/profile/update'
 			data.post(url, $scope.profile).then(function (response) {
-				console.dir(response);
 		      	if(response.result)
 		      		alert('Profile updated successfully');
 		      	$scope.loading = false;

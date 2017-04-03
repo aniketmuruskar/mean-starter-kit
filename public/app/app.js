@@ -29,9 +29,10 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         $ocLazyLoad.load('ngTastyModule');
                         return $ocLazyLoad.load([
-                                'app/components/dashboard/dashboard.controller.js',
-                                'app/shared/directive/post/post.directive.js',
-                            ]);
+                            'app/components/dashboard/dashboard.controller.js',
+                            'app/components/post/post.service.js',
+                            'app/shared/directive/post/post.directive.js',
+                        ]);
                     }]
                 }
             })
@@ -42,8 +43,8 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
-                                'app/components/login/login.controller.js'
-                            ]);
+                            'app/components/login/login.controller.js'
+                        ]);
                     }]
                 }
             })
@@ -54,8 +55,8 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
-                                'app/components/signup/register.controller.js'
-                            ]);
+                            'app/components/signup/register.controller.js'
+                        ]);
                     }]
                 }
             })
@@ -66,8 +67,9 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
-                                'app/components/post/post.controller.js'
-                            ]);
+                            'app/components/post/post.service.js',
+                            'app/components/post/post.controller.js'
+                        ]);
                     }]
                 }
             })
@@ -78,12 +80,14 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
-                                'app/components/post-detail/post.detail.controller.js'
-                            ]);
+                            'app/components/post/post.service.js',
+                            'app/components/post-detail/post.detail.controller.js'
+                        ]);
                     }],
-                    post: ['data', '$stateParams', function (data, $stateParams) {
+                    postdetail: ['Post', '$stateParams', function (Post, $stateParams) {
                         var url = '/api/posts/edit/' + $stateParams.postId;
-                        return data.get(url);
+                        console.log($stateParams.postId)
+                        return Post.get(url);
                     }]
                 }
             })
@@ -95,6 +99,7 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         $ocLazyLoad.load('ngTastyModule');
                         return $ocLazyLoad.load([
+                                'app/components/post/post.service.js',
                                 'app/components/post-list/post-list.controller.js'
                             ]);
                     }]
@@ -107,8 +112,8 @@ function config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
-                                'app/components/profile/profile.controller.js'
-                            ]);
+                            'app/components/profile/profile.controller.js'
+                        ]);
                     }],
                     profileData: ['data', function (data) {
                         // Return our Service call, that returns a Promise

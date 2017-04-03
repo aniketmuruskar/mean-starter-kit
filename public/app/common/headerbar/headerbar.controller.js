@@ -4,14 +4,14 @@
 			.controller('HeaderBarController', HeaderBarController);
 
 	/*@ngInject*/
-	HeaderBarController.$inject = ['$scope', '$state', 'auth'];
-	function HeaderBarController($scope, $state, auth){
+	HeaderBarController.$inject = ['$scope', '$state', 'jwt'];
+	function HeaderBarController($scope, $state, jwt) {
 
-		$scope.isLoggedIn = auth.isLoggedIn;
-	  	$scope.currentUser = auth.currentUser;
-	  	$scope.logoutUser = auth.logout;
+		$scope.isLoggedIn = jwt.isLoggedIn;
+	  	$scope.currentUser = jwt.currentUser;
+	  	$scope.logoutUser = jwt.logout;
 
-	  	$scope.logout = function(){
+	  	$scope.logout = function() {
 	  		$scope.logoutUser();
 	  		$state.go('login');
 	  	};

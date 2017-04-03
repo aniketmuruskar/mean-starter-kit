@@ -53,6 +53,25 @@ router.post('/createpost', auth, function (req, res, next) {
     });
 });
 
+// update post
+router.post('/updatepost', auth, function (req, res) {
+    
+    var query = {'_id':req.body._id};
+    var payload = {
+        author: req.body.author,
+        title: req.body.title,
+        description: req.body.description,
+        status: req.body.status
+    };
+
+    Post.findOneAndUpdate(query, payload, {new:true}, function (err, post) {
+        if (err)
+            res.json({err:err, result:0});
+
+        return res.json({result:1, post:post});
+    });
+});
+
 router.get('/dashboard', function (req, res) {
     var perPage = Math.abs(req.query.count) || 5,
         pageValue = Math.abs(req.query.page) || 1,
@@ -90,9 +109,9 @@ router.get('/edit/:post_id', function (req, res) {
         _id: req.params.post_id
     }, function (err, post) {
         if (err)
-            return res.json({result:0, data:[]});
+            return res.json({result:0, post:[]});
 
-        return res.json({result:1, data:post});
+        return res.json({result:1, post:post});
         
     });
 });

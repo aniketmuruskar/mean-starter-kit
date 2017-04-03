@@ -1,14 +1,14 @@
 angular.module('shared.module')
 		.factory('data', dataService);
 
-dataService.$inject = ['$http', 'auth'];
+dataService.$inject = ['$http', 'jwt'];
 
-function dataService($http, auth){
+function dataService($http, jwt){
 
 	function getProfile() {
 		var url = '/api/profile/user';
 	    return $http.get(url, {
-            headers: {Authorization: 'Bearer '+auth.getToken()}
+            headers: {Authorization: 'Bearer '+jwt.getToken()}
   		}).then(function (response) {
 	      return response.data;
 	    });
@@ -16,7 +16,7 @@ function dataService($http, auth){
 
 	function getData(url) {
 		return $http.get(url, {
-            headers: {Authorization: 'Bearer '+auth.getToken()}
+            headers: {Authorization: 'Bearer '+jwt.getToken()}
   		}).then(function (response) {
 	      return response.data;
 	    });
@@ -24,7 +24,7 @@ function dataService($http, auth){
 	
 	function postData(url, data) {
 		return $http.post(url, data, {
-            headers: {Authorization: 'Bearer '+auth.getToken()}
+            headers: {Authorization: 'Bearer '+jwt.getToken()}
   		}).then(function (response) {
 	      return response.data;
 	    });

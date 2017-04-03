@@ -4,11 +4,9 @@
     	.controller('DashboardController', DashboardController);
 
     /*@ngInject*/
-    DashboardController.$inject = ['$scope', '$http', '$state'];
-    function DashboardController($scope, $http, $state) {
+    DashboardController.$inject = ['$scope', '$state', 'Post'];
+    function DashboardController($scope, $http, Post) {
     	
-        $scope.loading = true;
-
         $scope.init = {
           'count': 5,
           'page': 1,
@@ -23,24 +21,15 @@
         };
 
         $scope.getResource = function (params, paramsObj) {
-            var url = '/api/posts/dashboard?' + params;
 
-            return $http.get(url).then(function (response) {
+            if($scope.loading) return;
+                
+            $scope.loading = true;
+            var url = '/api/posts/dashboard?' + params;
+            return Post.get(url).then(function (response) {
                 $scope.loading = false;
-                return {
-                  'rows': response.data.rows,
-                  'header': response.data.header,
-                  'pagination': response.data.pagination,
-                  'sortBy': '_id',
-                  'sortOrder': 'dsc'
-                }
-            }, function error(response){
-                $scope.loading = false;
+                return Post.getResponse(response);
             });
         };
-
-        $scope.getData = function() {
-          
-        }; 
     };
 })();
