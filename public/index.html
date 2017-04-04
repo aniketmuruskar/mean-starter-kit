@@ -5,7 +5,6 @@
 	<meta charset="utf-8">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
-
 	<title>Node/Angular Todo App</title>
 
 	<!-- SCROLLS -->
@@ -24,7 +23,7 @@
       <li class="active"><a ui-sref="home">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Post <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a ui-sref="post">My Posts</a></li>
+          <li><a ui-sref="myposts">My Posts</a></li>
           <li><a ui-sref="addpost">Add Post</a></li>
         </ul>
       </li>
@@ -51,7 +50,7 @@
   </div>
 </nav>
   
-<div class="container">
+<div class="container-fluid">
   <div ui-view></div>
 </div>
 
@@ -72,5 +71,6 @@
   <script type="text/javascript"  src="/app/shared/directive/alert-msg/alert.message.directive.js"></script>
   <script type="text/javascript"  src="/app/common/headerbar/headerbar.controller.js"></script>
   <script type="text/javascript"  src="/app/app.js"></script>
+  <script type="text/javascript"  src="/app/components/post/post.service.js"></script>
 </body>
 </html>

@@ -29,9 +29,12 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 
 
 // app routes ======================================================================
-app.use('/', require('./app/routes'))
-
+app.use('/api', require('./app/routes'))
+app.all('*', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
 
 // listen (start app with node server.js) ======================================
 app.listen(port);
+
 console.log("App listening on port " + port);

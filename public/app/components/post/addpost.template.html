@@ -1,9 +1,10 @@
-<div data-ng-controller="PostController">
-    <p><a class="btn btn-info" ui-sref="myposts">My Posts</a></p>
+<div class="row">
+  <div class="col-md-6 col-xs-12" data-ng-controller="PostController">
     <p class="text-center" ng-show="loading">
       <span class="fa fa-spinner fa-spin fa-3x"></span>
     </p>
     <form class="form-horizontal" ng-submit="createPost()">
+      <p><a class="btn btn-info" ui-sref="posts.list">My Posts</a></p>
       <alert-msg alert="alert" ng-if="alert.show"></alert-msg>
       <div class="form-group">
         <label class="control-label col-sm-2" for="email">Title</label>
@@ -40,4 +41,5 @@
         </div>
       </div>
     </form>
+  </div>
 </div>

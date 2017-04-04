@@ -8,9 +8,9 @@ function config($compileProvider, $httpProvider, $locationProvider, $stateProvid
 
     "ngInject";
 
-
     $httpProvider.interceptors.push('myHttpInterceptor');
-    //$locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(false);
+    //$locationProvider.hashPrefix('!');
     $compileProvider.debugInfoEnabled(true);
 
     $ocLazyLoadProvider.config({
@@ -36,7 +36,6 @@ function config($compileProvider, $httpProvider, $locationProvider, $stateProvid
                         $ocLazyLoad.load('ngTastyModule');
                         return $ocLazyLoad.load([
                             'app/components/dashboard/dashboard.controller.js',
-                            'app/components/post/post.service.js',
                             'app/shared/directive/post/post.directive.js',
                         ]);
                     }]
@@ -73,40 +72,36 @@ function config($compileProvider, $httpProvider, $locationProvider, $stateProvid
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
-                            'app/components/post/post.service.js',
                             'app/components/post/post.controller.js'
                         ]);
                     }]
                 }
             })
-            .state('post', {
-                url: '/post',
+            .state('myposts', {
+                url: '/your-posts',
                 controller:'PostListController',
                 templateUrl:'app/components/post-list/post-list.template.html',
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         $ocLazyLoad.load('ngTastyModule');
                         return $ocLazyLoad.load([
-                                'app/components/post/post.service.js',
                                 'app/components/post-list/post-list.controller.js'
                             ]);
                     }]
                 }
             })
-            .state('post.detail', {
-                url: '/{postId}',
+            .state('postdetail', {
+                url: '/post/{postId}/edit',
                 controller:'PostDetailController',
                 templateUrl:'app/components/post-detail/postdetail.template.html',
                 resolve:{
                     load: ['$ocLazyLoad', function($ocLazyLoad){
                         return $ocLazyLoad.load([
-                            'app/components/post/post.service.js',
                             'app/components/post-detail/post.detail.controller.js'
                         ]);
                     }],
                     postdetail: ['Post', '$stateParams', function (Post, $stateParams) {
                         var url = '/api/posts/edit/' + $stateParams.postId;
-                        console.log($stateParams);
                         return Post.get(url);
                     }]
                 }
@@ -156,5 +151,8 @@ function run($rootScope, $state) {
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         console.log('from:' + fromState.name + ' to:' +toState.name);
+    });
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+        console.dir(error);
     });
 };
