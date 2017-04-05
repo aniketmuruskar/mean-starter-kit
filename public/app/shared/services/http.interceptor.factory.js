@@ -20,7 +20,9 @@ angular.module('shared.module')
 
 	        responseError: function (response) {
 	            if (response.status === 401) {
-	               window.location.href = "http://localhost:8886/#!/auth/sign-in";
+	                if(jwt.getToken())
+	               		jwt.logout();
+	               window.location.href = "http://localhost:8886/#/auth/sign-in";
 	            }
 	            if (response.status == 403) {
 	                alert("Permission denied.");
