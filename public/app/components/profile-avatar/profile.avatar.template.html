@@ -1,14 +1,12 @@
 <h2></h2>
 <div class="row" data-ng-controller="ProfileAvatarController">
-	<p class="text-center" ng-show="loading">
-        <span class="fa fa-spinner fa-spin fa-3x"></span>
-    </p>
-	<div class="col-md-8 col-xs-12">
-		<label class="btn btn-default btn-file">
+	<div class="col-md-6 col-xs-12">
+		<h2 align="center">Set your picture</h2>
+		<label class="btn btn-default btn-file" ng-if="false">
             Browse <input type="file" nv-file-select uploader="uploader" style="display:none;" />
         </label>
         <!-- <input type="file" nv-file-select uploader="uploader"/><br/> -->
-        <table class="table table-bordered">
+        <table class="table table-bordered" ng-if="false">
 	        <thead>
 	            <tr>
 	                <th width="50%">Name</th>

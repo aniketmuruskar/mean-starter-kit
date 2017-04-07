@@ -7,11 +7,12 @@ config.$inject = ['$compileProvider', '$httpProvider', '$locationProvider', '$st
 function config($compileProvider, $httpProvider, $locationProvider, $stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
 
     "ngInject";
-
     $httpProvider.interceptors.push('myHttpInterceptor');
     //$locationProvider.html5Mode(false);
     //$locationProvider.hashPrefix('!');
-    $compileProvider.debugInfoEnabled(true);
+    $compileProvider.debugInfoEnabled(false);
+    $compileProvider.commentDirectivesEnabled(false);
+    $compileProvider.cssClassDirectivesEnabled(false);
 
     $ocLazyLoadProvider.config({
         debug: true,

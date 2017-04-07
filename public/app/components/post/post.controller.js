@@ -20,7 +20,9 @@ function PostController($scope, $state, Post){
         $scope.loading = true;
         Post.create($scope.post).then(function success(response) {
             $scope.loading = false;
-            $scope.post = {};
+            $scope.post = {
+                status: 0
+            };
             $scope.alert = {
               type: 'alert-success',
               message: 'Post has been added successfully',
