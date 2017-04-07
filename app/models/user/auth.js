@@ -40,7 +40,7 @@ UserSchema.methods.generateJWT = function() {
 
   // set expiration to 60 days
   var today = new Date();
-  var exp = new Date(today.getTime() + (60 * 60 * 1000)); // set expiration to 1 hour for demomstration
+  var exp = new Date(today.getTime() + (30 * 1 * 1000)); // set expiration to 1 hour for demomstration
   //var exp = new Date(today);
   //exp.setDate(today.getDate() + 60);
 
