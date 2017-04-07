@@ -4,7 +4,7 @@ var Post = require('../../models/post/post');
 var jwt = require('express-jwt');
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
-function getPosts(req, res){
+function getPosts(req, res, next){
     
     var perPage = Math.abs(req.query.count) || 5,
         pageValue = Math.abs(req.query.page) || 1,
@@ -18,6 +18,8 @@ function getPosts(req, res){
             _id: 'desc'
         })
         .exec(function(err, posts) {
+
+            if(err) { return next(err); }
             Post.count(query).exec(function(err, count) {
                 res.json({
                     rows: posts,
@@ -37,8 +39,8 @@ function getPosts(req, res){
 };
 
 // get all posts
-router.get('/allposts', auth, function (req, res) {
-    getPosts(req, res);
+router.get('/allposts', auth, function (req, res, next) {
+    getPosts(req, res, next);
 });
 
 // create post
@@ -47,14 +49,14 @@ router.post('/createpost', auth, function (req, res, next) {
     post.user = req.payload._id;
 
     post.save(function(err, post) {
-        if(err){ return next(err); }
+        if(err) { return next(err); }
 
-        getPosts(req, res);
+        getPosts(req, res, next);
     });
 });
 
 // update post
-router.post('/updatepost', auth, function (req, res) {
+router.post('/updatepost', auth, function (req, res, next) {
     
     var query = {'_id':req.body._id};
     var payload = {
@@ -65,14 +67,13 @@ router.post('/updatepost', auth, function (req, res) {
     };
 
     Post.findOneAndUpdate(query, payload, {new:true}, function (err, post) {
-        if (err)
-            res.json({err:err, result:0});
+        if(err) { return next(err); }
 
         return res.json({result:1, post:post});
     });
 });
 
-router.get('/dashboard', function (req, res) {
+router.get('/dashboard', function (req, res, next) {
     var perPage = Math.abs(req.query.count) || 5,
         pageValue = Math.abs(req.query.page) || 1,
         headerValue = [],
@@ -85,6 +86,8 @@ router.get('/dashboard', function (req, res) {
             _id: 'desc'
         })
         .exec(function(err, posts) {
+
+            if(err) { return next(err); }
             Post.count(query).exec(function(err, count) {
                 res.json({
                     rows: posts,
@@ -103,18 +106,24 @@ router.get('/dashboard', function (req, res) {
         })
 });
 
-router.get('/edit/:post_id', function (req, res) {
+router.get('/edit/:post_id', function (req, res, next) {
 
     Post.findOne({
         _id: req.params.post_id
     }, function (err, post) {
-        if (err)
-            return res.json({result:0, post:[]});
-
+        if(err) { return next(err); }
         return res.json({result:1, post:post});
-        
     });
 });
 
+router.use(function (err, req, res, next) {
+  if (err.status === 401) {
+    res.status(401).json({ result:0, statusMsg:'Invalid Token Expire'});
+  } else if (err.status === 400) {
+    res.status(400).json({ result:0, statusMsg:'Bad request'});
+  } else {
+    res.status(403).json({ result:0, statusMsg:'Forbidden request'});
+  }
+});
 
 module.exports = router

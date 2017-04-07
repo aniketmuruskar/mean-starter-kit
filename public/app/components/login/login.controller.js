@@ -15,7 +15,7 @@
 
             auth.login($scope.user).then(function(response){
                 $scope.loading = false;
-                $state.go('post');
+                $state.go('myposts');
             }, function(error){
                 $scope.error = error.data;
                 $scope.loading = false;
