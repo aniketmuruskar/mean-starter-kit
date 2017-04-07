@@ -38,12 +38,6 @@
           <li class="divider"></li>
           <li><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
       </ul>
-
-      <!--
-      <li ng-show="isLoggedIn()"><a href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> Hello, {{ currentUser() }}</a></li>
-      <li ng-show="isLoggedIn()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-      -->
-
       <li ng-hide="isLoggedIn()"><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li ng-hide="isLoggedIn()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
@@ -60,8 +54,6 @@
 	<script type="text/javascript"  src="/static/assets/angular/angular.min.js"></script><!-- load angular -->
 	<script type="text/javascript"  src="/static/assets/angular-ui-router/release/angular-ui-router.min.js"></script><!-- load angular-ui-router -->
   <script type="text/javascript"  src="/static/assets/oclazyload/dist/ocLazyLoad.min.js"></script><!-- load oclazyload -->
-  <!-- <script type="text/javascript"  src="/static/assets/angular-sanitize/angular-sanitize.min.js"></script> load angular-sanitize -->
-  <!-- <script type="text/javascript"  src="/static/assets/ngToast/dist/ngToast.min.js"></script> load ngToast -->
   <script type="text/javascript"  src="/app/shared/shared.module.js"></script>
   <script type="text/javascript"  src="/app/common/common.module.js"></script>
   <script type="text/javascript"  src="/app/shared/services/http.interceptor.factory.js"></script>

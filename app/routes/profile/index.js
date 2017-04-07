@@ -21,9 +21,7 @@ router.post('/update', auth, function (req, res, next) {
     var query = {'_id':req.body._id};
 
     Profile.findOneAndUpdate(query, req.body, {new:true}, function (err, profile) {
-        if(err) { 
-            return res.json({result:0, error:err});
-        }
+        if(err) { return next(err); }
         return res.json({result:1, user:profile});
     });
 });

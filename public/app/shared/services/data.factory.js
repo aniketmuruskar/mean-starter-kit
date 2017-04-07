@@ -14,7 +14,7 @@
 		};
 		
 		function postData(url, data) {
-			return $http.post(url).then(function (response) {
+			return $http.post(url, data).then(function (response) {
 		      return response.data;
 		    });
 		};

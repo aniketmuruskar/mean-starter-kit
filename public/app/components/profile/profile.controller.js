@@ -13,6 +13,7 @@
 		$scope.updateProfile = function(){
 			$scope.loading = true;
 			var url = '/api/profile/update'
+			alert('Im');
 			data.post(url, $scope.profile).then(function (response) {
 		      	if(response.result)
 		      		$scope.alert = {
