@@ -4,6 +4,7 @@ A MEAN Stack Starter Kit app built with MongoDB, Angular, Node.js Express framew
 
 Node provides the RESTful API. Angular provides the frontend and accesses the API. MongoDB provides document database.
 
+
 ## Features & Highlights
 
 - Frontend development using [angularjs][angularjs].
@@ -19,7 +20,7 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 ## Prerequisites
 
 - GIT to clone the `mean-starter-kit` repository, you can get git from  [here][git-home]
-- Install [Node.js][node-download] on your machine.
+- Install [Node.js][node-download] on your machine. Recommend latest node version
 - Install [Bower][bower] globally by using `npm install -g bower`
 - Install MongoDB, you can get installation guide from [MongoDB][mongodb]
 
@@ -35,7 +36,7 @@ var port = 8886; // default port = 8886
 
 ## Installation
 
-1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+1. Clone the repository: `git clone https://github.com/aniketmuruskar/mean-starter-kit`
 2. Install the application: `npm install`
 3. Place your own MongoDB URI in `config/database.js`
 3. Start the server: `node server.js`
